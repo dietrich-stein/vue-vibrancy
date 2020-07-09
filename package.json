@@ -58,14 +58,6 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/script-indent": [
-        "error",
-        "tab"
-      ],
-      "indent": [
-        "error",
-        "tab"
-      ]
     }
   },
   "browserslist": [

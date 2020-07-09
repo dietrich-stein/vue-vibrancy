@@ -60,11 +60,11 @@ var shg_table = [
 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ];
 
-export function stackBlur(canvas, top_x, top_y, width, height, radius ) {
+export function stackBlur(context, top_x, top_y, width, height, radius ) {
   if ( isNaN(radius) || radius < 1 ) return;
   radius |= 0;
 
-  var context = canvas.getContext('2d')
+  //var context = canvas.getContext('2d')
   var imageData;
 
   imageData = context.getImageData( top_x, top_y, width, height );
