@@ -34,6 +34,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "markdown-loader": "^5.1.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -57,8 +58,7 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {
-    }
+    "rules": {}
   },
   "browserslist": [
     "> 1%",
