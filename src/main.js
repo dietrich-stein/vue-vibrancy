@@ -6,18 +6,27 @@ const app = new Vue({
   data: {
     currentRoute: getCurrentRoute(),
     currentRouteParams: getCurrentRouteParams(),
-    backgroundImageUrl: 'https://images.unsplash.com/photo-1591758692416-b47871e30eac?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max',
-    rangeValue1: '90',
-    rangeValue2: '135',
-    rangeValue3: '180'
+    backgroundImagePencils: require('./assets/pencils.jpg'),
+    backgroundImagePier: require('./assets/pier.jpg'),
+    backgroundImageModern: require('./assets/modern.jpg'),
+    backgroundImageFoliage: require('./assets/foliage.jpg'),
+    backgroundImageUrl: '',
+    rangeValue1: 90,
+    rangeValue2: 135,
+    rangeValue3: 180
   },
   watch: {
     currentRoute() {
-      this.currentRouteParams = getCurrentRouteParams()
-      this.$forceUpdate()
+      this.$nextTick().then(() => {
+        this.$forceUpdate()
+      })
+    },
+    currentRouteParams() {
+      this.$nextTick().then(() => {
+        this.$forceUpdate()
+      })
     },
     backgroundImageUrl() {
-      this.currentRouteParams = getCurrentRouteParams()
       if (this.currentRoute === '/demo') {
         this.$nextTick().then(() => {
           app.$children[0].onBackgroundImageChanged()
@@ -66,4 +75,5 @@ function getCurrentRouteParams() {
 
 window.addEventListener('popstate', () => {
   app.currentRoute = getCurrentRoute()
+  app.currentRouteParams = getCurrentRouteParams()
 })
