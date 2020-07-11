@@ -7,6 +7,7 @@
         ref="v1"
         :radius="$root.rangeValue1"
         :modify-parent="resizeParentOptions[demoId]"
+        :filter="'saturate(200%) brightness(150%)'"
       >
         <template v-slot:content>
           <p>What are you waiting for?</p>
@@ -28,6 +29,7 @@
         ref="v3"
         :radius="$root.rangeValue3"
         :modify-parent="resizeParentOptions[demoId]"
+        :filter="'saturate(200%) brightness(150%)'"
       >
         <template v-slot:content>
           <p>Push the limit or get out of the way.</p>
@@ -50,7 +52,7 @@
     data: function () {
       return {
         demoId: 0,
-        resizeParentOptions: [ true, false, false ]
+        resizeParentOptions: [ true, true, true ]
       }
     },
     computed: {

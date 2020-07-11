@@ -8,24 +8,8 @@
     </li>
     <li class="separator"></li>
     <li>
-      <h5>Supported Parent Styles</h5>
+      <v-link class="bold" href="/demo?id=0">Demo</v-link>
     </li>
-    <li>
-      <v-link class="small" href="/demo?id=0">backgroundSize: auto</v-link>
-    </li>
-    <li>
-      <h5>Unsupported Parent Styles</h5>
-    </li>
-    <li>
-      <v-link class="small" href="/demo?id=1">backgroundSize: cover</v-link>
-    </li>
-    <li>
-      <v-link class="small" href="/demo?id=2">backgroundRepeat: repeat</v-link>
-    </li>
-    <li class="footnote gray">
-      Tip: Remember to reload the page<br /> after switching the parent style.
-    </li>
-    <li v-if="$root.currentRoute === '/demo'" class="separator"></li>
     <li v-if="$root.currentRoute === '/demo'">
       <h5>Background</h5>
       <div>
@@ -127,5 +111,7 @@
   }
   .range-label {
     width: 2rem;
+    vertical-align: text-bottom;
+    padding-left: .5rem;
   }
 </style>

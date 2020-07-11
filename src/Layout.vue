@@ -37,7 +37,6 @@
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   }
   .container {
-    height: 100%;
     display: flex;
     background-color: darkgray;
   }

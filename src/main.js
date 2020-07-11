@@ -6,7 +6,9 @@ const app = new Vue({
   data: {
     currentRoute: getCurrentRoute(),
     currentRouteParams: getCurrentRouteParams(),
-    documentation: require('../README.md'),
+    docReadMe: require('../README.md'),
+    docLicense: require('../LICENSE.md'),
+    backgroundImagePreview: require('./assets/vibrancy-preview.png'),
     backgroundImagePencils: require('./assets/pencils.jpg'),
     backgroundImagePier: require('./assets/pier.jpg'),
     backgroundImageModern: require('./assets/modern.jpg'),
