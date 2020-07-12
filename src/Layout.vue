@@ -1,7 +1,9 @@
 <template>
-  <div class="container">
-    <v-nav></v-nav>
-    <slot></slot>
+  <div id="app">
+    <div class="container">
+      <v-nav></v-nav>
+      <slot></slot>
+    </div>
   </div>
 </template>
 
