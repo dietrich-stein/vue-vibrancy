@@ -62,7 +62,7 @@ npm install @vuenique/vue-vibrancy --save
 The current implementation of this component is only designed for very limited use case. Do you have any of the
 following requirements?
 
-- Support for background images that are tiled or stretched with parent styles like 'background-size: cover' or 'background-repeat: repeat`
+- Support for background images that are tiled or stretched with parent styles like `background-size: cover` or `background-repeat: repeat`
 - Support for responsive design changes resulting from resizing of the browser window or changes in device orientation
 - Support for dragging/moving the target element or scrolling while the background image of the parent element has a `background-attachment: fixed`
 - Support for background images affected by a `background-position` value other than the default of `0% 0%`
@@ -77,7 +77,7 @@ for these features is a possible but not currently planned.
 Vibrancy is name for a visual effect that was refined and made popular by Apple in 2014 with the introduction of OS X
 Yosemite. They
 [describe](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/translucency/) it as
-follows in their Human Interface Guidelines:
+follows in their Human Interface Guidelines as follows:
 
 > &hellip;a subtle effect that dynamically blends the foreground and background colors using a careful balance of
 lightening and darkening techniques. This combination helps make foreground content stand out against any background.
