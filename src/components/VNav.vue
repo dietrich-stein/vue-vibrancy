@@ -6,12 +6,12 @@
     <li>
       <v-link class="bold" href="/">Documentation</v-link>
     </li>
-    <li class="separator"></li>
     <li>
       <v-link class="bold" href="/demo?id=0">Demo</v-link>
     </li>
+    <li class="separator"></li>
     <li v-if="$root.currentRoute === '/demo'">
-      <h5>Background</h5>
+      <h5>Background Image</h5>
       <div>
         <button @click="onBackgroundButtonClicked($root.backgroundImagePencils)">Pencils</button>
         <button @click="onBackgroundButtonClicked($root.backgroundImagePier)">Pier</button>
@@ -23,9 +23,21 @@
     </li>
     <li v-if="$root.currentRoute === '/demo'">
       <h5>Blur Radius</h5>
-      <input type="range" min="0" max="180" v-model.number="$root.rangeValue1"/><span class="range-label">{{ $root.rangeValue1 }}</span><br/>
-      <input type="range" min="0" max="180" v-model.number="$root.rangeValue2"/><span class="range-label">{{ $root.rangeValue2 }}</span><br/>
-      <input type="range" min="0" max="180" v-model.number="$root.rangeValue3"/><span class="range-label">{{ $root.rangeValue3 }}</span><br/>
+      <input type="range" min="0" max="180" v-model.number="$root.blurValue1"/><span class="range-label">{{ $root.blurValue1 }}</span><br/>
+      <input type="range" min="0" max="180" v-model.number="$root.blurValue2"/><span class="range-label">{{ $root.blurValue2 }}</span><br/>
+      <input type="range" min="0" max="180" v-model.number="$root.blurValue3"/><span class="range-label">{{ $root.blurValue3 }}</span>
+    </li>
+    <li v-if="$root.currentRoute === '/demo'">
+      <h5>Canvas Filter</h5>
+      <input type="text" v-model.number="$root.filterValue1"/><br/>
+      <input type="text" v-model.number="$root.filterValue2"/><br/>
+      <input type="text" v-model.number="$root.filterValue3"/><br/>
+    </li>
+    <li v-if="$root.currentRoute === '/demo'">
+      <h5>Noise</h5>
+      <input type="range" min="0" max="30" v-model.number="$root.noiseValue1"/><span class="range-label">{{ $root.noiseValue1 / 100 }}</span><br/>
+      <input type="range" min="0" max="30" v-model.number="$root.noiseValue2"/><span class="range-label">{{ $root.noiseValue2 / 100 }}</span><br/>
+      <input type="range" min="0" max="30" v-model.number="$root.noiseValue3"/><span class="range-label">{{ $root.noiseValue3 / 100 }}</span>
     </li>
   </ul>
 </template>
@@ -90,7 +102,7 @@
     user-select: none;
   }
   .v-nav li h5 {
-    margin: 0;
+    margin: 1rem 0 0 0;
   }
   .v-nav li a {
     text-decoration: none;
@@ -107,7 +119,13 @@
     padding: 0.2rem;
   }
   button {
-    margin-right: 0.5rem;
+    margin: 0.5rem 0.5rem 0 0;
+  }
+  input[type=text] {
+    border: 1px solid #ddd;
+    font-size: 0.6rem;
+    width: 100%;
+    padding: 0.5rem;
   }
   .range-label {
     width: 2rem;

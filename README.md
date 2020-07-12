@@ -53,9 +53,9 @@ npm install @vuenique/vue-vibrancy --save
 | Prop Name       | Type      | Default | Description                                                                  |
 | --------------- | --------- | ------- | -----------------------------------------------------------------------------|
 | `filter`        | *String*  | `''`    | Affects the `filter` property of the internal canvas via the `filter` property of the `CanvasRenderingContext2D` API. Using a value like `saturate(200%) brightness(150%)` is recommended to best replicate the intended effect. However, this API property is not currently supported in Safari for iOS and macOS. |
-| `radius`        | *Number*  | `90`    | Sets the intensity of the blur affect in range of values between 0 and 180. A setting of somehwere between 90 and 180 is recommended for best results.   |
+| `radius`        | *Number*  | `90`    | Sets the intensity of the blur effect in a range of values between 0 and 180. A setting of somehwere between 90 and 180 is recommended for best results. |
 | `modify-parent` | *Boolean* | `true`  | When set to `true`, the component will automatically set the width and height of the closest parent with a valid `background-image` style so that the dimensions exactly match the actual width and height dimensions of the image. |
-
+| `noise`         | *Number*  | `0`     | Sets the intensity of the noise effect in range of values between `0.0` and `1.0`. This enables simulating the "acrylic" effect introduced by Microsoft. Values above `0.3` are unlikely to give visually pleasing results. |
 
 ## Limitations <a name="limitation"></a>
 

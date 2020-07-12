@@ -14,9 +14,15 @@ const app = new Vue({
     backgroundImageModern: require('./assets/modern.jpg'),
     backgroundImageFoliage: require('./assets/foliage.jpg'),
     backgroundImageUrl: '',
-    rangeValue1: 90,
-    rangeValue2: 135,
-    rangeValue3: 180
+    blurValue1: 90,
+    blurValue2: 135,
+    blurValue3: 180,
+    noiseValue1: 0,
+    noiseValue2: 0,
+    noiseValue3: 0,
+    filterValue1: 'saturate(200%) brightness(150%)',
+    filterValue2: 'saturate(200%) brightness(150%)',
+    filterValue3: 'saturate(200%) brightness(150%)'
   },
   watch: {
     currentRoute() {
@@ -36,21 +42,63 @@ const app = new Vue({
         })
       }
     },
-    rangeValue1() {
+    blurValue1() {
       if (this.currentRoute === '/demo') {
         this.$nextTick().then(() => {
           app.$children[0].$refs.v1.updateCanvas()
         })
       }
     },
-    rangeValue2() {
+    blurValue2() {
       if (this.currentRoute === '/demo') {
         this.$nextTick().then(() => {
           app.$children[0].$refs.v2.updateCanvas()
         })
       }
     },
-    rangeValue3() {
+    blurValue3() {
+      if (this.currentRoute === '/demo') {
+        this.$nextTick().then(() => {
+          app.$children[0].$refs.v3.updateCanvas()
+        })
+      }
+    },
+    noiseValue1() {
+      if (this.currentRoute === '/demo') {
+        this.$nextTick().then(() => {
+          app.$children[0].$refs.v1.updateCanvas()
+        })
+      }
+    },
+    noiseValue2() {
+      if (this.currentRoute === '/demo') {
+        this.$nextTick().then(() => {
+          app.$children[0].$refs.v2.updateCanvas()
+        })
+      }
+    },
+    noiseValue3() {
+      if (this.currentRoute === '/demo') {
+        this.$nextTick().then(() => {
+          app.$children[0].$refs.v3.updateCanvas()
+        })
+      }
+    },
+    filterValue1() {
+      if (this.currentRoute === '/demo') {
+        this.$nextTick().then(() => {
+          app.$children[0].$refs.v1.updateCanvas()
+        })
+      }
+    },
+    filterValue2() {
+      if (this.currentRoute === '/demo') {
+        this.$nextTick().then(() => {
+          app.$children[0].$refs.v2.updateCanvas()
+        })
+      }
+    },
+    filterValue3() {
       if (this.currentRoute === '/demo') {
         this.$nextTick().then(() => {
           app.$children[0].$refs.v3.updateCanvas()

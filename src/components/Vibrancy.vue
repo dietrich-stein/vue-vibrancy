@@ -23,7 +23,11 @@
       modifyParent: {
         type: Boolean,
         default: true
-      }
+      },
+      noise: {
+        type: Number,
+        default: 0
+      },
     },
     data: function () {
       return {
@@ -140,8 +144,32 @@
           parseFloat(this.radius) >= 0 &&
           parseFloat(this.radius) <= 180
         ) ? parseFloat(this.radius) : 90
+        if (blurRadius > 0) {
+          stackBlur(ctx, 0, 0, elWidth, elHeight, blurRadius)
+        }
 
-        stackBlur(ctx, 0, 0, elWidth, elHeight, blurRadius)
+        let noiseValue = (
+          typeof(this.noise) === 'number' &&
+          parseFloat(this.noise) >= 0 &&
+          parseFloat(this.noise) <= 1
+        ) ? parseFloat(this.noise) : 0
+        if (noiseValue > 0) {
+          let imageData = ctx.getImageData(0, 0, elWidth, elHeight)
+
+          let i, r, g, b, color, il = imageData.data.length
+          for (i = 0; i < il; i += 4) {
+            color = Math.random() * 255
+
+            r = imageData.data[i + 0] * color / 255
+            g = imageData.data[i + 1] * color / 255
+            b = imageData.data[i + 2] * color / 255
+
+            imageData.data[i + 0] = r * noiseValue + imageData.data[i + 0] * (1 - noiseValue)
+            imageData.data[i + 1] = g * noiseValue + imageData.data[i + 1] * (1 - noiseValue)
+            imageData.data[i + 2] = b * noiseValue + imageData.data[i + 2] * (1 - noiseValue)
+          }
+          ctx.putImageData(imageData, 0, 0)
+        }
       }
     },
     created() {

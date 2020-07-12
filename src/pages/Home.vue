@@ -65,16 +65,15 @@
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background-color: #f6f8fa;
+    background-color: #eee;
     border-radius: 6px;
   }
-  p.home > h1 > code,
-  p.home > h2 > code,
-  p.home > h3 > code,
-  p.home > h4 > code,
-  p.home > h5 > code,
-  p.home > h6 > code,
-  p.home > code {
+
+  pre > code {
+    border: none;
+  }
+  code {
+    border-radius: 6px;
     border: 1px lightgray solid;
     background-color: #eee;
     padding: 0.2rem;

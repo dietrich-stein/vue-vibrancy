@@ -5,9 +5,10 @@
       <vibrancy
         id="v01"
         ref="v1"
-        :radius="$root.rangeValue1"
+        :radius="$root.blurValue1"
         :modify-parent="resizeParentOptions[demoId]"
-        :filter="'saturate(200%) brightness(150%)'"
+        :filter="$root.filterValue1"
+        :noise="$root.noiseValue1 / 100"
       >
         <template v-slot:content>
           <p>What are you waiting for?</p>
@@ -16,9 +17,10 @@
       <vibrancy
         id="v02"
         ref="v2"
-        :radius="$root.rangeValue2"
+        :radius="$root.blurValue2"
         :modify-parent="resizeParentOptions[demoId]"
-        :filter="'saturate(200%) brightness(150%)'"
+        :filter="$root.filterValue2"
+        :noise="$root.noiseValue2 / 100"
       >
         <template v-slot:content>
           <p>The perfect design is now within your grasp.</p>
@@ -27,9 +29,10 @@
       <vibrancy
         id="v03"
         ref="v3"
-        :radius="$root.rangeValue3"
+        :radius="$root.blurValue3"
         :modify-parent="resizeParentOptions[demoId]"
-        :filter="'saturate(200%) brightness(150%)'"
+        :filter="$root.filterValue3"
+        :noise="$root.noiseValue3 / 100"
       >
         <template v-slot:content>
           <p>Push the limit or get out of the way.</p>
