@@ -24,7 +24,8 @@
     "effect"
   ],
   "files": [
-    "dist/*",
+    "dist/*.js",
+    "dist/*.css",
     "src/*",
     "package.json",
     "README.md",
