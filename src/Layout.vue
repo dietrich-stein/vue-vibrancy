@@ -20,7 +20,7 @@
 </script>
 
 <style>
-  @import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
   html {
     box-sizing: border-box;
