@@ -109,7 +109,7 @@ const app = new Vue({
   render: (h) => {
     return h(getRouteComponent())
   },
-})
+}).$mount('#app')
 
 function getRouteComponent() {
   let key = getCurrentRoute()
