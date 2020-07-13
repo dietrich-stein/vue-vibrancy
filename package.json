@@ -27,12 +27,12 @@
     "effect"
   ],
   "files": [
-    "dist/*.js",
-    "dist/*.css",
+    "dist/*",
     "src/*",
-    "package.json",
-    "README.md",
-    "LICENSE.md"
+    "public/*",
+    "*.json",
+    "*.js",
+    "*.md"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
