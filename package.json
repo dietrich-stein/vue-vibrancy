@@ -5,17 +5,18 @@
   "main": "dist/vue-vibrancy.umd.js",
   "module": "dist/vue-vibrancy.esm.js",
   "unpkg": "dist/vue-vibrancy.umd.min.js",
-  "homepage": "https://github.com/dietrich-stein/vue-vibrancy",
+  "homepage": "https://dietrich-stein.github.io/vue-vibrancy/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dietrich-stein/vue-vibrancy.git"
+  },
   "author": {
     "name": "Dietrich Stein",
     "url": "https://github.com/dietrich-stein"
   },
   "license": "MIT",
   "publishConfig": {
-    "access": "public",
-    "branches": [
-      "master"
-    ]
+    "access": "public"
   },
   "keywords": [
     "vue",
@@ -40,6 +41,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
@@ -50,8 +53,6 @@
     "eslint-plugin-vue": "^6.2.2",
     "html-loader": "^1.1.0",
     "markdown-loader": "^5.1.0",
-    "vue": "^2.6.11",
-    "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
