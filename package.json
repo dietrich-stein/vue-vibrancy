@@ -13,7 +13,9 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public",
-    "branches": ["master"]
+    "branches": [
+      "master"
+    ]
   },
   "keywords": [
     "vue",
@@ -37,7 +39,8 @@
     "build-dist": "vue-cli-service build --target lib src/components/Vibrancy.vue",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
@@ -48,6 +51,7 @@
     "html-loader": "^1.1.0",
     "markdown-loader": "^5.1.0",
     "vue": "^2.6.11",
+    "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

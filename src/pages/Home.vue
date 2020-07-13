@@ -1,21 +1,22 @@
 
 <template>
-  <layout>
-    <p ref="doc" class="home" v-html="this.currentDoc"></p>
-  </layout>
+  <p ref="doc" class="home" v-html="this.currentDoc"></p>
 </template>
 
 <script>
-  import Layout from '../Layout.vue'
   export default {
     name: 'Home',
     components: {
-      Layout
     },
     data: function () {
       return {
-        currentDoc: this.$root.docReadMe
+        docReadMe: require('../../README.md'),
+        docLicense: require('../../LICENSE.md'),
+        currentDoc: ''
       }
+    },
+    created () {
+      this.currentDoc = this.docReadMe
     },
     mounted () {
       let links = this.$refs.doc.getElementsByTagName('a')
@@ -23,7 +24,7 @@
         if (link.href.indexOf('LICENSE.md') > -1) {
           link.addEventListener('click', event => {
             event.preventDefault();
-            this.currentDoc = this.$root.docLicense
+            this.currentDoc = this.docLicense
           }, false)
         }
       })

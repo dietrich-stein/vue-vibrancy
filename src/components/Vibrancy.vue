@@ -107,23 +107,6 @@
         let source = this.img
         let parentRect = this.elParent.getBoundingClientRect()
 
-        /*
-        // This is somewhat working but not quite correct
-        let bgSize = this.getBackgroundSize(this.elParent) // auto is default
-        // For a "cover" parent we need to stretch the image first before we can use it as the source
-        if (bgSize === 'cover') {
-          let elParentWidth = Math.round(parentRect.right - parentRect.left)
-          let elParentHeight = Math.round(parentRect.bottom - parentRect.top)
-
-          let stretchCanvas = document.createElement('canvas')
-          stretchCanvas.width = elParentWidth
-          stretchCanvas.height = elParentHeight
-          let stretchCtx = stretchCanvas.getContext('2d')
-          stretchCtx.drawImage(this.img, 0, 0, this.img.width, this.img.height, 0, 0, elParentWidth, elParentHeight)
-
-          source = stretchCanvas
-        }*/
-
         if (this.filter && this.filter.length > 0) {
           ctx.filter = this.filter
         }
@@ -171,25 +154,6 @@
           ctx.putImageData(imageData, 0, 0)
         }
       }
-    },
-    created() {
-      /*
-      // Works, needs debounce, but disabled for further debugging in the future
-      window.addEventListener('scroll', () => {
-        this.scrollY = window.scrollY;
-        if (this.isImageLoaded) {
-          this.updateCanvas()
-        }
-      })
-      */
-      /*
-      // Works, needs debounce, but disabled for further debugging in the future
-      window.addEventListener('resize', () => {
-        if (this.isImageLoaded) {
-          this.updateCanvas()
-        }
-      })
-      */
     },
     mounted: function (){
       this.elParent = this.findParentWithImage(this.$el)

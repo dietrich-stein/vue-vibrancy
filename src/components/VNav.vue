@@ -4,59 +4,81 @@
         <h1>vue-vibrancy</h1>
     </li>
     <li>
-      <v-link class="bold" href="/">Documentation</v-link>
+      <router-link to="/" class="bold">Documentation</router-link>
     </li>
     <li>
-      <v-link class="bold" href="/demo?id=0">Demo</v-link>
+      <router-link to="/demo" class="bold">Demo</router-link>
     </li>
     <li class="separator"></li>
-    <li v-if="$root.currentRoute === '/demo'">
+    <li v-if="$route.name === 'demo'">
       <h5>Background Image</h5>
       <div>
-        <button @click="onBackgroundButtonClicked($root.backgroundImagePencils)">Pencils</button>
-        <button @click="onBackgroundButtonClicked($root.backgroundImagePier)">Pier</button>
+        <button @click="onBackgroundButtonClicked('backgroundImagePencils')">Pencils</button>
+        <button @click="onBackgroundButtonClicked('backgroundImagePier')">Pier</button>
       </div>
       <div>
-        <button @click="onBackgroundButtonClicked($root.backgroundImageModern)">Modern</button>
-        <button @click="onBackgroundButtonClicked($root.backgroundImageFoliage)">Foliage</button>
+        <button @click="onBackgroundButtonClicked('backgroundImageModern')">Modern</button>
+        <button @click="onBackgroundButtonClicked('backgroundImageFoliage')">Foliage</button>
       </div>
     </li>
-    <li v-if="$root.currentRoute === '/demo'">
+    <li v-if="$route.name === 'demo'">
       <h5>Blur Radius</h5>
-      <input type="range" min="0" max="180" v-model.number="$root.blurValue1"/><span class="range-label">{{ $root.blurValue1 }}</span><br/>
-      <input type="range" min="0" max="180" v-model.number="$root.blurValue2"/><span class="range-label">{{ $root.blurValue2 }}</span><br/>
-      <input type="range" min="0" max="180" v-model.number="$root.blurValue3"/><span class="range-label">{{ $root.blurValue3 }}</span>
+      <input type="range" min="0" max="180" name="blurValue1" v-model.number="b1" @input="onUpdateBlur"/><span class="range-label">{{ b1 }}</span><br/>
+      <input type="range" min="0" max="180" name="blurValue2" v-model.number="b2" @input="onUpdateBlur"/><span class="range-label">{{ b2 }}</span><br/>
+      <input type="range" min="0" max="180" name="blurValue3" v-model.number="b3" @input="onUpdateBlur"/><span class="range-label">{{ b3 }}</span>
     </li>
-    <li v-if="$root.currentRoute === '/demo'">
+    <li v-if="$route.name === 'demo'">
       <h5>Canvas Filter</h5>
-      <input type="text" v-model.number="$root.filterValue1"/><br/>
-      <input type="text" v-model.number="$root.filterValue2"/><br/>
-      <input type="text" v-model.number="$root.filterValue3"/><br/>
+      <input type="text" name="filterValue1" v-model.number="f1" @input="onUpdateFilter"/><br/>
+      <input type="text" name="filterValue2" v-model.number="f2" @input="onUpdateFilter"/><br/>
+      <input type="text" name="filterValue3" v-model.number="f3" @input="onUpdateFilter"/><br/>
     </li>
-    <li v-if="$root.currentRoute === '/demo'">
+    <li v-if="$route.name === 'demo'">
       <h5>Noise</h5>
-      <input type="range" min="0" max="30" v-model.number="$root.noiseValue1"/><span class="range-label">{{ $root.noiseValue1 / 100 }}</span><br/>
-      <input type="range" min="0" max="30" v-model.number="$root.noiseValue2"/><span class="range-label">{{ $root.noiseValue2 / 100 }}</span><br/>
-      <input type="range" min="0" max="30" v-model.number="$root.noiseValue3"/><span class="range-label">{{ $root.noiseValue3 / 100 }}</span>
+      <input type="range" min="0" max="30" name="noiseValue1" v-model.number="n1" @input="onUpdateNoise"/><span class="range-label">{{ n1 / 100 }}</span><br/>
+      <input type="range" min="0" max="30" name="noiseValue2" v-model.number="n2" @input="onUpdateNoise"/><span class="range-label">{{ n2 / 100 }}</span><br/>
+      <input type="range" min="0" max="30" name="noiseValue3" v-model.number="n3" @input="onUpdateNoise"/><span class="range-label">{{ n3 / 100 }}</span>
     </li>
   </ul>
 </template>
 
 <script>
-  import VLink from './VLink.vue'
-
   export default {
     name: 'VNav',
-    components: {
-      VLink
-    },
-    data: function () {
+    data() {
       return {
+        b1: 90,
+        b2: 135,
+        b3: 180,
+        f1: 'saturate(200%) brightness(150%)',
+        f2: 'saturate(200%) brightness(150%)',
+        f3: 'saturate(200%) brightness(150%)',
+        n1: 0,
+        n2: 0,
+        n3: 0
       }
     },
     methods: {
       onBackgroundButtonClicked(value) {
-        this.$root.backgroundImageUrl = value
+        this.$root.$emit('background', value)
+      },
+      onUpdateBlur(event) {
+        this.$root.$emit('update', {
+          name: event.target.name,
+          value: parseInt(event.target.value)
+        })
+      },
+      onUpdateFilter(event) {
+        this.$root.$emit('update', {
+          name: event.target.name,
+          value: event.target.value
+        })
+      },
+      onUpdateNoise(event) {
+        this.$root.$emit('update', {
+          name: event.target.name,
+          value: parseInt(event.target.value) / 100
+        })
       }
     }
   }

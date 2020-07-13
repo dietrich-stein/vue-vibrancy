@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <div class="container">
-      <v-nav></v-nav>
-      <slot></slot>
-    </div>
+  <div id="app" class="container">
+    <v-nav></v-nav>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,12 +9,9 @@
   import VNav from './components/VNav.vue'
 
   export default {
-    name: 'Layout',
+    name: 'App',
     components: {
       VNav
-    },
-    created () {
-      this.$root.backgroundImageUrl = this.$root.backgroundImagePencils
     }
   }
 </script>

@@ -1,66 +1,123 @@
 
 <template>
-  <layout>
-    <div class="demo-container" :class="demoClass" :style="'background-image: url(' + $root.backgroundImageUrl + ')'">
-      <vibrancy
-        id="v01"
-        ref="v1"
-        :radius="$root.blurValue1"
-        :modify-parent="resizeParentOptions[demoId]"
-        :filter="$root.filterValue1"
-        :noise="$root.noiseValue1 / 100"
-      >
-        <template v-slot:content>
-          <p>What are you waiting for?</p>
-        </template>
-      </vibrancy>
-      <vibrancy
-        id="v02"
-        ref="v2"
-        :radius="$root.blurValue2"
-        :modify-parent="resizeParentOptions[demoId]"
-        :filter="$root.filterValue2"
-        :noise="$root.noiseValue2 / 100"
-      >
-        <template v-slot:content>
-          <p>The perfect design is now within your grasp.</p>
-        </template>
-      </vibrancy>
-      <vibrancy
-        id="v03"
-        ref="v3"
-        :radius="$root.blurValue3"
-        :modify-parent="resizeParentOptions[demoId]"
-        :filter="$root.filterValue3"
-        :noise="$root.noiseValue3 / 100"
-      >
-        <template v-slot:content>
-          <p>Push the limit or get out of the way.</p>
-        </template>
-      </vibrancy>
-    </div>
-  </layout>
+  <div class="demo-container" :style="'background-image: url(' + backgroundUrl + ')'">
+    <vibrancy
+      id="v01"
+      ref="v1"
+      :radius="blurValue1"
+      :modify-parent="true"
+      :filter="filterValue1"
+      :noise="noiseValue1"
+    >
+      <template v-slot:content>
+        <p>What are you waiting for?</p>
+      </template>
+    </vibrancy>
+    <vibrancy
+      id="v02"
+      ref="v2"
+      :radius="blurValue2"
+      :modify-parent="true"
+      :filter="filterValue2"
+      :noise="noiseValue2"
+    >
+      <template v-slot:content>
+        <p>The perfect design is now within your grasp.</p>
+      </template>
+    </vibrancy>
+    <vibrancy
+      id="v03"
+      ref="v3"
+      :radius="blurValue3"
+      :modify-parent="true"
+      :filter="filterValue3"
+      :noise="noiseValue3"
+    >
+      <template v-slot:content>
+        <p>Push the limit or get out of the way.</p>
+      </template>
+    </vibrancy>
+  </div>
 </template>
 
 <script>
-  import Layout from '../Layout.vue'
   import Vibrancy from '../components/Vibrancy.vue'
 
   export default {
     name: 'Demo',
     components: {
-      Layout,
       Vibrancy
     },
     data: function () {
       return {
-        demoId: 0,
-        resizeParentOptions: [ true, true, true ]
+        backgroundImagePreview: require('../assets/vibrancy-preview.png'),
+        backgroundImagePencils: require('../assets/pencils.jpg'),
+        backgroundImagePier: require('../assets/pier.jpg'),
+        backgroundImageModern: require('../assets/modern.jpg'),
+        backgroundImageFoliage: require('../assets/foliage.jpg'),
+        backgroundUrl: '',
+        blurValue1: 90,
+        blurValue2: 135,
+        blurValue3: 180,
+        noiseValue1: 0,
+        noiseValue2: 0,
+        noiseValue3: 0,
+        filterValue1: 'saturate(200%) brightness(150%)',
+        filterValue2: 'saturate(200%) brightness(150%)',
+        filterValue3: 'saturate(200%) brightness(150%)'
       }
     },
-    computed: {
-      demoClass () {
-        return 'demo-' + this.getDemoId()
+    watch: {
+      backgroundUrl() {
+        this.$nextTick().then(() => {
+          this.onBackgroundImageChanged()
+        })
+      },
+      blurValue1() {
+        this.$nextTick().then(() => {
+          this.$refs.v1.updateCanvas()
+        })
+      },
+      blurValue2() {
+        this.$nextTick().then(() => {
+          this.$refs.v2.updateCanvas()
+        })
+      },
+      blurValue3() {
+        this.$nextTick().then(() => {
+          this.$refs.v3.updateCanvas()
+        })
+      },
+      noiseValue1() {
+        this.$nextTick().then(() => {
+          this.$refs.v1.updateCanvas()
+        })
+      },
+      noiseValue2() {
+        this.$nextTick().then(() => {
+          this.$refs.v2.updateCanvas()
+        })
+      },
+      noiseValue3() {
+        console.log('n3')
+        this.$nextTick().then(() => {
+          this.$refs.v3.updateCanvas()
+        })
+      },
+      filterValue1() {
+        this.$nextTick().then(() => {
+          this.$refs.v1.updateCanvas()
+        })
+      },
+      filterValue2() {
+        this.$nextTick().then(() => {
+          this.$refs.v2.updateCanvas()
+        })
+      },
+      filterValue3() {
+        this.$nextTick().then(() => {
+          this.$refs.v3.updateCanvas()
+        })
       }
     },
     methods: {
@@ -68,16 +125,19 @@
         this.$refs.v1.loadImage()
         this.$refs.v2.loadImage()
         this.$refs.v3.loadImage()
-      },
-      getDemoId () {
-        let params = this.$root.currentRouteParams
-        if (params.length > 3 && params.substr(0, 3) === 'id=') {
-          params = params.slice(3)
-          this.demoId = parseInt(params)
-        }
-
-        return this.demoId
       }
+    },
+    created () {
+      this.backgroundUrl = this.backgroundImagePencils
+    },
+    mounted () {
+      this.$root.$on('background', data => {
+        this.backgroundUrl = this[data]
+      });
+
+      this.$root.$on('update', data => {
+        this[data.name] = data.value
+      });
     }
   }
 </script>
@@ -89,14 +149,7 @@
     height: 100%;
   }
 
-  .demo-container.demo-1 {
-    background-size: cover;
-  }
-  .demo-container.demo-2 {
-    background-repeat: repeat;
-  }
-
-  /* Top Header */
+  /* Top */
   #v01 {
     width: 100%;
     height: 100px;
@@ -111,7 +164,7 @@
     color: black;
   }
 
-  /* Centered */
+  /* Middle */
   #v02 {
     width: 500px;
     height: 150px;
@@ -128,7 +181,7 @@
     color: black;
   }
 
-  /* Bottom Footer */
+  /* Bottom */
   #v03 {
     width: 100%;
     height: 100px;
