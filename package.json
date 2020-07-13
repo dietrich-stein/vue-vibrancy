@@ -1,6 +1,7 @@
 {
   "name": "@vuenique/vue-vibrancy",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "description": "Vue.js component for adding stylish frosted glass effects over background images",
   "private": false,
   "main": "dist/vue-vibrancy.umd.js",
   "module": "dist/vue-vibrancy.esm.js",
